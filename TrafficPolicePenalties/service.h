@@ -29,6 +29,7 @@ struct Fine {
     Fine *next;
 public:
     Fine(T *d);
+    friend ostream &operator<<(ostream &stream, Fine n);
 };
 
 // Автомобиль
@@ -43,5 +44,6 @@ public:
 };
 
 void printNode(Node*);
+void outNode(ostream &stream, Node *r);
 
 #endif

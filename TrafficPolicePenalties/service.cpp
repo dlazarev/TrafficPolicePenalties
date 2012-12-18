@@ -21,12 +21,29 @@ Node::Node(T *d)
     right = NULL;
 }
 
+ostream &operator<<(ostream &stream, Node n)
+{
+    stream << n.number;
+    stream << *n.begin;
+    
+    return stream;
+}
+
 Fine::Fine(T *d)
 {
     time = d->time;
     type = d->type;
     price = d->price;
     next = NULL;
+}
+
+ostream &operator<<(ostream &stream, Fine f)
+{
+    stream << f.time << ';' << f.type << ';' << f.price << endl;
+    if (f.next)
+        stream << *f.next;
+    
+    return stream;
 }
 
 void Data::userInput(void)
@@ -49,5 +66,10 @@ void Data::userInput(void)
 
 void printNode(Node *r)
 {
-    cout << r->number << endl;
+    cout << *r << endl;
+}
+
+void outNode(ostream &stream, Node *r)
+{
+    stream << *r;
 }

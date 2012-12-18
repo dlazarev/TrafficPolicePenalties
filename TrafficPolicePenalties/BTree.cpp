@@ -33,9 +33,22 @@ void BTree::_inOrderWalk(Node *r, void DoIt(Node*))
     _inOrderWalk(r->right, DoIt);
 }
 
+void BTree::_inOrderWalk(ostream &stream, Node *r, void DoIt(ostream&, Node*))
+{
+    if(r == NULL) return;
+    DoIt(stream, r);
+    _inOrderWalk(stream, r->left, DoIt);
+    _inOrderWalk(stream, r->right, DoIt);
+}
+
 void BTree::InOrderWalk(void DoIt(Node*))
 {
     _inOrderWalk(root, DoIt);
+}
+
+void BTree::InOrderWalk(ostream &stream, void DoIt(ostream &stream, Node*))
+{
+    _inOrderWalk(stream, root, DoIt);
 }
 
 void BTree::print()
@@ -45,6 +58,6 @@ void BTree::print()
 
 ostream &operator<<(ostream &stream, BTree r)
 {
-    stream << "I'm BTree!" << endl;
+    r.InOrderWalk(stream, outNode);
     return stream;
 }

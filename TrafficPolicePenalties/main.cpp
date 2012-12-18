@@ -3,6 +3,7 @@
 //  TrafficPolicePenalties
 
 #include <iostream>
+#include <fstream>
 #include "BTree.h"
 using namespace std;
 
@@ -20,8 +21,14 @@ int main(int argc, const char * argv[])
     data->userInput();
     bt.Add(data);
     
-    bt.print();
+    ofstream outfile("TrafficPolicePenalties.dat");
+    if (!outfile) {
+        cout << "Output file error." << endl;
+        return 1;
+    }
     
+    outfile << bt;
+    outfile.close();
     
     delete data;
     return 0;
