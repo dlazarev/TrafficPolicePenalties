@@ -14,8 +14,11 @@
 
 class BTree {
 private:
-    Node *root;
-    
+    Node* root;
+    Node* _add(Node *r, T *d);
+
+public:
+    void Add(T *d);
 };
 
 #endif /* defined(__TrafficPolicePenalties__BTree__) */

@@ -6,28 +6,38 @@
 #ifndef TrafficPolicePenalties_service_h
 #define TrafficPolicePenalties_service_h
 
-// Штраф
-struct Fine {
-    char *time;
-    char *type;
-    float price;
-    Fine *next;
-}
-
-// Автомобиль
-struct Node {
-    char *number;
-    Fine *begin;
-    Node *left;
-    Node *right;
-}
+#include <string>
+using namespace std;
 
 // Данные о нарушении
 struct Data {
-    char *number;
-    char *time;
-    char *type;
+    string number;
+    string time;
+    string type;
     float price;
-}
+};
+
+typedef Data T;
+
+// Штраф
+struct Fine {
+    string time;
+    string type;
+    float price;
+    Fine *next;
+public:
+    Fine(T *d);
+};
+
+// Автомобиль
+struct Node {
+    string number;
+    Fine *begin;
+    Node *left;
+    Node *right;
+public:
+    Node(T *d);
+};
+
 
 #endif
