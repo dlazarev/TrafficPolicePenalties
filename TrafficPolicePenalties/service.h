@@ -15,6 +15,8 @@ struct Data {
     string time;
     string type;
     float price;
+public:
+    void userInput(void); // Ввод данных о нарушении
 };
 
 typedef Data T;
@@ -37,7 +39,9 @@ struct Node {
     Node *right;
 public:
     Node(T *d);
+    friend ostream &operator<<(ostream &stream, Node n);
 };
 
+void printNode(Node*);
 
 #endif

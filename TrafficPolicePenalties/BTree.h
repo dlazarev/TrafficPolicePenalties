@@ -16,9 +16,12 @@ class BTree {
 private:
     Node* root;
     Node* _add(Node *r, T *d);
-
+    void _inOrderWalk(Node *r, void DoIt(Node*));
 public:
     void Add(T *d);
+    void InOrderWalk(void DoIt(Node*));
+    void print();
+    friend ostream &operator<<(ostream &stream, BTree r);
 };
 
 #endif /* defined(__TrafficPolicePenalties__BTree__) */
