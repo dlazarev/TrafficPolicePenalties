@@ -17,6 +17,7 @@ struct Data {
     float price;
 public:
     void userInput(void); // Ввод данных о нарушении
+//   friend istream &operator>>(istream &stream, Data d); // Чтение записи из файла
 };
 
 typedef Data T;
@@ -39,11 +40,14 @@ struct Node {
     Node *left;
     Node *right;
 public:
+    Node() {number = ""; begin = NULL; left = NULL; right = NULL; }
     Node(T *d);
     friend ostream &operator<<(ostream &stream, Node n);
+    friend istream &operator>>(istream &stream, Node &n);
 };
 
 void printNode(Node*);
 void outNode(ostream &stream, Node *r);
+Fine *readFine(string&);
 
 #endif

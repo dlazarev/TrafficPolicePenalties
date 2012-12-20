@@ -17,9 +17,25 @@ Node* BTree::_add(Node *r, T *d)
     return r;
 }
 
+Node* BTree::_add(Node *r, Node *new_node)
+{
+    if (r == NULL)
+        r = new_node;
+    else if (new_node->number < r->number)
+        r->left = _add(r->left,new_node);
+    else
+        r->right = _add(r->right, new_node);
+    return r;
+};
+
 void BTree::Add(T *d)
 {
     root = _add(root, d);
+}
+
+void BTree::Add(Node *n)
+{
+    root = _add(root, n);
 }
 
 void BTree::_inOrderWalk(Node *r, void DoIt(Node*))

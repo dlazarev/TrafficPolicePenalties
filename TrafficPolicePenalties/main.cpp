@@ -11,7 +11,22 @@ int main(int argc, const char * argv[])
 {
     BTree bt;
     T *data = new T;
+    Node *n;
     
+    ifstream infile("TrafficPolicePenalties.dat");
+    if (!infile) {
+        cout << "Input file error." << endl;
+        return 1;
+    }
+    
+    while (!infile.eof()) {
+        n = new Node;
+        infile >> *n;
+        bt.Add(n);
+    }
+    infile.close();
+    
+/*
     data->userInput();
     bt.Add(data);
     
@@ -29,7 +44,7 @@ int main(int argc, const char * argv[])
     
     outfile << bt;
     outfile.close();
-    
+*/
     delete data;
     return 0;
 }

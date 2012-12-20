@@ -16,10 +16,12 @@ class BTree {
 private:
     Node* root;
     Node* _add(Node *r, T *d);
+    Node* _add(Node *r, Node *);
     void _inOrderWalk(Node *r, void DoIt(Node*));
     void _inOrderWalk(ostream&, Node *r, void DoIt(ostream&, Node*));
 public:
     void Add(T *d);
+    void Add(Node *n);
     void InOrderWalk(void DoIt(Node*));
     void InOrderWalk(ostream&, void DoIt(ostream&, Node*));
     void print();
