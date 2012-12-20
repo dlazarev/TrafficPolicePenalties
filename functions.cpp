@@ -31,16 +31,23 @@ using namespace std;
 Выход из программы - 6
 */
 
+static float sum_fine = 0;
+static int car_count = 0;
+
 int main_menu(BTree *bt)
 {
     T *data = new T;
     
     while(true) {
+        cout << "Главное меню" << endl;
+        cout << "------------------------------------" << endl;
         cout << "1. Ввод записи о нарушении." << endl;
         cout << "2. Оплата штрафа." << endl;
         cout << "3. Получение сведений об автомобиле." << endl;
         cout << "4. Печать сводной информации." << endl;
         cout << "5. Выход." << endl;
+        cout << "------------------------------------" << endl;
+        cout << "=>";
         
         char c = getchar();
     
@@ -59,7 +66,7 @@ int main_menu(BTree *bt)
                 break;
             
             case '4':
-                cout << "Ждет реализации..." << endl;
+                report(bt);
                 break;
             
             case '5':
@@ -106,3 +113,30 @@ void save_to_file(BTree *bt)
     outfile << *bt;
     outfile.close();
 }
+
+void report(BTree* bt)
+{
+    sum_fine = 0;
+    car_count = 0;
+    bt->InOrderWalk(stat);
+    
+    cout << "Сводная информация о нарушениях и штрафах." << endl;
+    cout << "******************************************" << endl;
+    cout << "Количество автомобилей: " << car_count << endl;
+    cout << "Общая сумма штрафов: " << sum_fine << endl;
+    cout << "******************************************" << endl;
+    
+}
+
+void stat(Node* n)
+{
+    Fine *f = n->begin;
+    while(f) {
+        sum_fine += f->price;
+        f = f->next;
+    }
+    car_count++;
+    
+}
+
+

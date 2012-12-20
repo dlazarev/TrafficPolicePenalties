@@ -12,5 +12,6 @@
 int main_menu(BTree*);
 void read_from_file(BTree*);
 void save_to_file(BTree*);
-
+void report(BTree*);
+void stat(Node* n);
 #endif
