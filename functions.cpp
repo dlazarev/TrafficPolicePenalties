@@ -37,6 +37,8 @@ static int car_count = 0;
 int main_menu(BTree *bt)
 {
     T *data = new T;
+    char c;
+    string s;
     
     while(true) {
         cout << "Главное меню" << endl;
@@ -49,7 +51,8 @@ int main_menu(BTree *bt)
         cout << "------------------------------------" << endl;
         cout << "=>";
         
-        char c = getchar();
+        getline(cin, s);
+        c = s[0];
     
         switch (c) {
             case '1':

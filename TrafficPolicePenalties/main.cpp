@@ -18,7 +18,7 @@ int main(int argc, const char * argv[])
     
 //    Node *n = bt.Search(string("A318KK52"));
     save_to_file(&bt);
-
+//    cout << bt;
     return 0;
 }
 
