@@ -30,7 +30,11 @@ Node* BTree::_add(Node *r, Node *new_node)
 
 void BTree::Add(T *d)
 {
-    root = _add(root, d);
+    Node *n = Search(d->number);
+    if (n)
+        n->addFine(d);
+    else
+        root = _add(root, d);
 }
 
 void BTree::Add(Node *n)
@@ -62,6 +66,26 @@ void BTree::InOrderWalk(void DoIt(Node*))
 void BTree::InOrderWalk(ostream &stream, void DoIt(ostream &stream, Node*))
 {
     _inOrderWalk(stream, root, DoIt);
+}
+
+Node* BTree::_search(Node *r, const string &number)
+{
+    if (!r) return NULL;
+    while (r->number != number) {
+        if (number < r->number)
+            r = r->left;
+        else
+            r = r->right;
+        if(!r)
+            break;
+    }
+    return r;
+}
+
+Node* BTree::Search(const string& number)
+{
+    Node *r = root;
+    return _search(r, number);
 }
 
 void BTree::print()

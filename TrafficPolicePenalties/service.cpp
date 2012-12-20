@@ -20,6 +20,19 @@ Node::Node(T *d)
     right = NULL;
 }
 
+void Node::addFine(T *d)
+{
+    Fine *tmp = begin;
+    
+    while (tmp) {
+        if (!tmp->next) {
+            tmp->next = new Fine(d);
+            break;
+        }
+        tmp = tmp->next;
+    }
+}
+
 ostream &operator<<(ostream &stream, Node n)
 {
     stream << n.number << endl;

@@ -42,6 +42,7 @@ struct Node {
 public:
     Node() {number = ""; begin = NULL; left = NULL; right = NULL; }
     Node(T *d);
+    void addFine(T*);
     friend ostream &operator<<(ostream &stream, Node n);
     friend istream &operator>>(istream &stream, Node &n);
 };

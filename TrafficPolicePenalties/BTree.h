@@ -19,11 +19,14 @@ private:
     Node* _add(Node *r, Node *);
     void _inOrderWalk(Node *r, void DoIt(Node*));
     void _inOrderWalk(ostream&, Node *r, void DoIt(ostream&, Node*));
+    Node* _search(Node *r, const string&);
 public:
+    BTree() { root = NULL; }
     void Add(T *d);
     void Add(Node *n);
     void InOrderWalk(void DoIt(Node*));
     void InOrderWalk(ostream&, void DoIt(ostream&, Node*));
+    Node* Search(const string&);
     void print();
     friend ostream &operator<<(ostream &stream, BTree r);
 };
