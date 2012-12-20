@@ -9,7 +9,7 @@
 
 #define DATA_FILE "/Users/dmitry/projects/Univer/TrafficPolicePenalties/TrafficPolicePenalties/TrafficPolicePenalties.dat"
 
-int main_menu(void);
+int main_menu(BTree*);
 void read_from_file(BTree*);
 void save_to_file(BTree*);
 
