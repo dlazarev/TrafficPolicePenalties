@@ -5,27 +5,16 @@
 #include <iostream>
 #include <fstream>
 #include "BTree.h"
+#include "functions.h"
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
     BTree bt;
-    T *data = new T;
-    Node *n;
     
-    ifstream infile("TrafficPolicePenalties.dat");
-    if (!infile) {
-        cout << "Input file error." << endl;
-        return 1;
-    }
+    read_from_file(&bt);
     
-    while (!infile.eof()) {
-        n = new Node;
-        infile >> *n;
-        if (!n->number.empty())
-            bt.Add(n);
-    }
-    infile.close();
+    save_to_file(&bt);
     
 /*
     data->userInput();
@@ -37,16 +26,7 @@ int main(int argc, const char * argv[])
     data->userInput();
     bt.Add(data);
 */
-    ofstream outfile("TrafficPolicePenalties.dat");
-    if (!outfile) {
-        cout << "Output file error." << endl;
-        return 1;
-    }
 
-    outfile << bt;
-    outfile.close();
-
-    delete data;
     return 0;
 }
 
