@@ -23,7 +23,8 @@ Node::Node(T *d)
 ostream &operator<<(ostream &stream, Node n)
 {
     stream << n.number << endl;
-    stream << *n.begin;
+    if (n.begin)
+        stream << *n.begin;
     stream << endl;
     
     return stream;

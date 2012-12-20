@@ -22,7 +22,8 @@ int main(int argc, const char * argv[])
     while (!infile.eof()) {
         n = new Node;
         infile >> *n;
-        bt.Add(n);
+        if (!n->number.empty())
+            bt.Add(n);
     }
     infile.close();
     
@@ -35,16 +36,16 @@ int main(int argc, const char * argv[])
     
     data->userInput();
     bt.Add(data);
-    
+*/
     ofstream outfile("TrafficPolicePenalties.dat");
     if (!outfile) {
         cout << "Output file error." << endl;
         return 1;
     }
-    
+
     outfile << bt;
     outfile.close();
-*/
+
     delete data;
     return 0;
 }
