@@ -9,6 +9,14 @@
 #include <string>
 using namespace std;
 
+struct DateTime {
+    string datetime;
+public:
+    DateTime &operator=(const string& str) { datetime = str; return *this;}
+    friend ostream &operator<<(ostream &stream, DateTime n);
+    string human_out();
+};
+
 // Данные о нарушении
 struct Data {
     string number;
@@ -24,7 +32,7 @@ typedef Data T;
 
 // Штраф
 struct Fine {
-    string time;
+    DateTime time;
     string type;
     float price;
     Fine *next;
@@ -43,6 +51,7 @@ public:
     Node() {number = ""; begin = NULL; left = NULL; right = NULL; }
     Node(T *d);
     void addFine(T*);
+    float sumFines(); // Возвращает сумму штрафов для автомобиля
     friend ostream &operator<<(ostream &stream, Node n);
     friend istream &operator>>(istream &stream, Node &n);
 };

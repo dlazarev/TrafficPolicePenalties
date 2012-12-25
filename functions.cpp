@@ -65,7 +65,7 @@ int main_menu(BTree *bt)
                 break;
             
             case '3':
-                cout << "Ждет реализации..." << endl;
+                car_info(bt);
                 break;
             
             case '4':
@@ -128,6 +128,9 @@ void report(BTree* bt)
     cout << "Количество автомобилей: " << car_count << endl;
     cout << "Общая сумма штрафов: " << sum_fine << endl;
     cout << "******************************************" << endl;
+    cout << endl << "Штрафы по автомобилям: " << endl;
+    bt->InOrderWalk(stat_by_car);
+    cout << "******************************************" << endl;
     
 }
 
@@ -142,4 +145,28 @@ void stat(Node* n)
     
 }
 
+void stat_by_car(Node* n)
+{
+    cout << n->number << ": " << n->sumFines() << " руб." << endl;
+}
 
+void car_info(BTree* bt)
+{
+    string num;
+    cout << "Введите номер автомобиля: ";
+    getline(cin, num);
+    Node *car = bt->Search(num);
+    Fine *tmp;
+    
+    if (car) {
+        cout << "******************************************" << endl;
+        cout << "Для автомобиля с гос. номером " << num << " зафиксированы следующие нарушения:" << endl;
+        tmp = car->begin;
+        while (tmp) {
+            cout << tmp->type << ", от " << tmp->time.human_out() << " на сумму " << tmp->price << " руб." << endl;
+            tmp = tmp->next;
+        }
+        cout << "******************************************" << endl;
+    } else cout << " Для указанного автомобиля не найдено сведений" << endl;
+    
+}

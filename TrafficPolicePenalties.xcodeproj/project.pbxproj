@@ -34,10 +34,10 @@
 		0A0303F4167CA283003F448B /* service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = service.h; sourceTree = "<group>"; };
 		0A0303F5167CABE9003F448B /* BTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTree.cpp; sourceTree = "<group>"; };
 		0A0303F6167CABE9003F448B /* BTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTree.h; sourceTree = "<group>"; };
-		0A2B743616833D9C008976B4 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = functions.h; path = ../functions.h; sourceTree = "<group>"; };
+		0A2B743616833D9C008976B4 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = functions.h; path = ../functions.h; sourceTree = "<group>"; };
 		0A2B743816833DB9008976B4 /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = functions.cpp; path = ../functions.cpp; sourceTree = "<group>"; };
 		0ADB9EA016805096008DD421 /* service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = service.cpp; sourceTree = "<group>"; };
-		AD94FD3416838F760018EA5A /* TrafficPolicePenalties.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrafficPolicePenalties.dat; sourceTree = "<group>"; };
+		AD94FD3416838F760018EA5A /* TrafficPolicePenalties.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = TrafficPolicePenalties.dat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

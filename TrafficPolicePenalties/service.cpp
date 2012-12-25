@@ -12,6 +12,19 @@
 #include "service.h"
 using namespace std;
 
+ostream &operator<<(ostream &stream, DateTime d)
+{
+    stream << d.datetime;
+    return stream;
+}
+
+string DateTime::human_out()
+{
+    string result = datetime.substr(6,2) + "." + datetime.substr(4,2) + "." + datetime.substr(0,4) +
+    " " + datetime.substr(8,2) + ":" + datetime.substr(10,2);
+    return result;
+}
+
 Node::Node(T *d)
 {
     number = d->number;
@@ -31,6 +44,18 @@ void Node::addFine(T *d)
         }
         tmp = tmp->next;
     }
+}
+
+float Node::sumFines()
+{
+    float sum_fines = 0.0;
+    Fine *tmp = begin;
+    
+    while (tmp) {
+        sum_fines += tmp->price;
+        tmp = tmp->next;
+    }
+    return sum_fines;
 }
 
 ostream &operator<<(ostream &stream, Node n)
