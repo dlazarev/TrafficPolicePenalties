@@ -19,4 +19,5 @@ void report(BTree*);
 void stat(Node* n);
 void stat_by_car(Node* n);
 void car_info(BTree*);
+void fine_payment(BTree*);
 #endif

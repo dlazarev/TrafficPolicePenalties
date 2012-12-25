@@ -61,7 +61,7 @@ int main_menu(BTree *bt)
                 break;
 
             case '2':
-                cout << "Ждет реализации..." << endl;
+                fine_payment(bt);
                 break;
             
             case '3':
@@ -168,5 +168,58 @@ void car_info(BTree* bt)
         }
         cout << "******************************************" << endl;
     } else cout << " Для указанного автомобиля не найдено сведений" << endl;
+    
+}
+
+void fine_payment(BTree *bt)
+{
+    string num;
+    string time;
+    float amount, payment;
+    
+    cout << "Введите номер автомобиля: ";
+    getline(cin, num);
+    Node *car = bt->Search(num);
+    Fine *tmp;
+    
+    if (!car) {
+        cout << " Для указанного автомобиля не найдено сведений" << endl;
+        return;
+    }
+    
+    tmp = car->begin;
+    while (tmp) {
+        cout << tmp->type << ", от " << tmp->time.human_out() << " на сумму " << tmp->price << " руб." << endl;
+        tmp = tmp->next;
+    }
+    
+    cout << "Введите дату штрафа, который вы хотите оплатить: ";
+    getline(cin, time);
+    tmp = car->searchFineByTime(time);
+    if (!tmp) {
+        cout << "Не найден штраф от указанной даты." << endl;
+        return;
+    }
+    
+    cout << "Укажите сумму оплаты, руб.: ";
+    cin >> amount;
+    
+    payment = min(tmp->price, amount);
+    tmp->price -= payment;
+    amount -= payment;
+    
+    tmp = car->begin;
+    while (tmp && amount > 0.0) {
+        payment = min(tmp->price, amount);
+        tmp->price -= payment;
+        amount -= payment;
+    }
+    
+    if (amount > 0.0)
+        cout << "Остаток денежных средств в размере " << amount << " руб. будет учтен в будущих платежах :)" << endl;
+    
+    // Удалим штрафы с нулевыми суммами
+    car->deleteZeroFine();
+    
     
 }

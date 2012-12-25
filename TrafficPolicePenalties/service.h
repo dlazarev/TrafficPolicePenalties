@@ -51,6 +51,8 @@ public:
     Node() {number = ""; begin = NULL; left = NULL; right = NULL; }
     Node(T *d);
     void addFine(T*);
+    Fine* searchFineByTime(const string&);
+    void deleteZeroFine(void); // Удаляет из списка оплаченные штрафы (price == 0)
     float sumFines(); // Возвращает сумму штрафов для автомобиля
     friend ostream &operator<<(ostream &stream, Node n);
     friend istream &operator>>(istream &stream, Node &n);

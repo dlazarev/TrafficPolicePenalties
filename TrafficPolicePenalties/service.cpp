@@ -58,6 +58,29 @@ float Node::sumFines()
     return sum_fines;
 }
 
+void Node::deleteZeroFine()
+{
+    Fine *tmp = begin;
+    Fine *prev = NULL;
+    
+    while (tmp) {
+        if (tmp->price == 0.0) {
+            if (tmp == begin) { // Это первый элемент
+                begin = tmp->next;
+                delete tmp;
+            } else {
+                prev->next = tmp->next;
+                tmp = tmp->next;
+                delete tmp;
+            
+            }
+        } else {
+            prev = tmp;
+            tmp = tmp->next;
+        }
+    }
+}
+
 ostream &operator<<(ostream &stream, Node n)
 {
     stream << n.number << endl;
@@ -119,6 +142,18 @@ ostream &operator<<(ostream &stream, Fine f)
     return stream;
 }
 
+Fine* Node::searchFineByTime(const string& str)
+{
+    Fine *tmp = begin;
+    while (tmp) {
+        if (tmp->time.datetime == str)
+            return tmp;
+        tmp = tmp->next;
+    }
+    
+    return NULL;
+}
+
 //******************************************************************
 
 void Data::userInput(void)
@@ -139,15 +174,7 @@ void Data::userInput(void)
     cin >> price;
 }
 
-/*
-istream &operator>>(istream &stream, Data d)
-{
-    return stream;
-}
-*/
-
 //******************************************************************
-
 Fine *readFine(string &str)
 {
     string s;
